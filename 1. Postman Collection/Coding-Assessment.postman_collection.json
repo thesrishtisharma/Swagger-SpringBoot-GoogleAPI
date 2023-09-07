@@ -403,12 +403,12 @@
 	"variable": [
 		{
 			"key": "client_id",
-			"value": "664993107260-cq3imkh2595slujbo9nmsg5unbnlj9ua.apps.googleusercontent.com",
+			"value": "",
 			"type": "string"
 		},
 		{
 			"key": "client_secret",
-			"value": "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",
+			"value": "",
 			"type": "string"
 		},
 		{
