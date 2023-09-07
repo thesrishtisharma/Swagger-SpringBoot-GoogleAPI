@@ -1,0 +1,430 @@
+{
+	"info": {
+		"_postman_id": "467eba63-30a5-4129-9003-e5477889c079",
+		"name": "Coding-Assessment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25502468"
+	},
+	"item": [
+		{
+			"name": "1. Get All Objects from bucket using OAuth",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "redirect_uri",
+							"value": "https://www.google.com",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "{{scope_url}}",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{client_id}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "{{access_token_url}}",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "{{auth_url}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "tokenName",
+							"value": "Google OAuth Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://storage.googleapis.com/storage/v1/b/srishti-bucket-01/o",
+					"protocol": "https",
+					"host": [
+						"storage",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"storage",
+						"v1",
+						"b",
+						"srishti-bucket-01",
+						"o"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "2. Uploading new object to bucket",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "redirect_uri",
+							"value": "https://www.google.com",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "{{scope_url}}",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{client_id}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "{{access_token_url}}",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "{{auth_url}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "tokenName",
+							"value": "Google OAuth Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "image/png",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": "/C:/Users/DELL/Downloads/pinpng.com-boss-baby-png-448375.png"
+					}
+				},
+				"url": {
+					"raw": "https://storage.googleapis.com/upload/storage/v1/b/srishti-bucket-01/o?uploadType=media&name=stacy.png",
+					"protocol": "https",
+					"host": [
+						"storage",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"upload",
+						"storage",
+						"v1",
+						"b",
+						"srishti-bucket-01",
+						"o"
+					],
+					"query": [
+						{
+							"key": "uploadType",
+							"value": "media"
+						},
+						{
+							"key": "name",
+							"value": "stacy.png"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "3. Copy the created object",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "redirect_uri",
+							"value": "https://www.google.com",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "{{scope_url}}",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{client_id}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "{{access_token_url}}",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "{{auth_url}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "tokenName",
+							"value": "Google OAuth Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"rewriteToken\": \"ya29.a0AfB_byBPqwVnPVuMrgF6gRL9jSSWnyQNbCjFkBWj7Aclbe6-azZ2SXeUDk9bILjfaqI4YoE2H3VRiymZJ0NrrOljOZyA0LQ0w8hQWzLYdD9s-LABExth5sjg7zWeDuTibHieQ5fsc4c2KH1Mt08XuFX2OirBEpHzYgOnZQaCgYKAe0SARISFQHsvYlsmK_94lu_A6oB-pJ-kk0d9w0173\"\r\n}"
+				},
+				"url": {
+					"raw": "https://storage.googleapis.com/storage/v1/b/srishti-bucket-01/o/stacy.png/rewriteTo/b/srishti-bucket-01/o/stacy-copy.png",
+					"protocol": "https",
+					"host": [
+						"storage",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"storage",
+						"v1",
+						"b",
+						"srishti-bucket-01",
+						"o",
+						"stacy.png",
+						"rewriteTo",
+						"b",
+						"srishti-bucket-01",
+						"o",
+						"stacy-copy.png"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "4. Delete the copied object",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "redirect_uri",
+							"value": "https://www.google.com",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "{{scope_url}}",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{client_secret}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{client_id}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "{{access_token_url}}",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "{{auth_url}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "tokenName",
+							"value": "Google OAuth Token",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Length",
+						"value": "0",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://storage.googleapis.com/storage/v1/b/srishti-bucket-01/o/stacy-copy.png",
+					"protocol": "https",
+					"host": [
+						"storage",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"storage",
+						"v1",
+						"b",
+						"srishti-bucket-01",
+						"o",
+						"stacy-copy.png"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "client_id",
+			"value": "664993107260-cq3imkh2595slujbo9nmsg5unbnlj9ua.apps.googleusercontent.com",
+			"type": "string"
+		},
+		{
+			"key": "client_secret",
+			"value": "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",
+			"type": "string"
+		},
+		{
+			"key": "auth_url",
+			"value": "https://accounts.google.com/o/oauth2/v2/auth",
+			"type": "string"
+		},
+		{
+			"key": "access_token_url",
+			"value": "https://oauth2.googleapis.com/token",
+			"type": "string"
+		},
+		{
+			"key": "scope_url",
+			"value": "https://www.googleapis.com/auth/devstorage.read_write",
+			"type": "string"
+		}
+	]
+}
