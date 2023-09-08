@@ -1,0 +1,360 @@
+openapi: 3.0.3
+info:
+  title: Google Cloud Platform APIs
+  description: |-
+    <b>Task 1: Swagger Open API Specifications</b>
+    
+    This open API spec includes 5 API endpoints for Google Cloud Storage APIs as mentioned below:
+    1. Generating OAuth2 Token for authenticating to GCP and using GCP APIs.
+    2. Getting all objects and their meta data from GCP storage bucket
+    3. Uploading new object (file) to GCP storage bucket
+    4. Copying/Cloning the object from source bucket to destination bucket with renaming
+    5. Deleting the object from cloud storage bucket
+
+    _Note: This Open API Specification is built keepting `Postman Collection` as base. This postman collection is available under the `GitHub repository` for reference._
+    
+    Link to Postman Collection:
+    - [Coding-Assessment-Postman-Collection](https://github.com/thesrishtisharma/Coding-Assessment/tree/master/1.%20Postman%20Collection)
+    ___________________________________________________________________________
+
+  contact:
+    email: imsrishtisharma@gmail.com
+  
+  version: 1.0.0
+
+security:
+  - BearerAuth: []      # reference the security scheme
+
+servers:
+  - url: https://accounts.google.com
+    description: Get access code
+
+  - url: https://oauth2.googleapis.com
+    description: Get access token
+
+  - url: https://storage.googleapis.com
+    description: Cloud Storage API
+
+paths:
+  /o/oauth2/auth:
+    get:
+      parameters:
+        - in: query
+          name: scope
+          schema:
+            type: string
+        - in: query
+          name: response_type
+          schema:
+            type: string
+        - in: query
+          name: access_type
+          schema:
+            type: string
+        - in: query
+          name: redirect_uri
+          schema:
+            type: string
+        - in: query
+          name: client_id
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                type: string
+      description: 1. Get access token
+      operationId: GetAccessTheAccessCode
+      summary: 1. Get Access the access code
+  
+  /token:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                client_id:
+                  type: string
+                  minLength: 1
+                client_secret:
+                  type: string
+                  minLength: 1
+                code:
+                  type: string
+                  minLength: 1
+                grant_type:
+                  type: string
+                  example: authorization_grant
+                  minLength: 19
+                redirect_uri:
+                  type: string
+                  example: https://www.google.com
+                  minLength: 1
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/accessToken'
+      description: 2. Get access token and refresh token
+      operationId: GetAccessTokenAndRefreshToken
+      summary: 2. Get access token and refresh token
+
+  /storage/v1/b/{target_bucket}/o:
+    get:
+      security:
+        - BearerAuth: []
+      parameters:
+        - in: path
+          name: target_bucket
+          required: true
+          schema:
+            type: string
+            enum:
+              - srishti-bucket-01
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/getObjects'
+      description: 3. Get All Objects from bucket using OAuth
+      operationId: GetAllObjectsFromBucketUsingOauth
+      summary: 3. Get All Objects from bucket using OAuth
+  
+  /upload/storage/v1/b/{target_bucket}/o:
+    post:
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          name: target_bucket
+          required: true
+          schema:
+            type: string
+            enum:
+              - srishti-bucket-01
+
+        - in: query
+          name: uploadType
+          schema:
+            type: string
+            enum:
+              - media
+
+        - in: query
+          name: name
+          schema:
+            type: string
+            example: stacy.png
+
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/uploadObject'
+      description: 4. Uploading new object to bucket
+      operationId: UploadingNewObjectToBucket
+      summary: 4. Uploading new object to bucket
+
+  /storage/v1/b/{source_bucket}/o/{source_object}/rewriteTo/b/{target_bucket}/o/{target_object}:
+    post:
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          required: true
+          name: source_bucket
+          schema:
+            type: string
+            enum:
+              - srishti-bucket-01
+
+        - in: path
+          required: true
+          name: source_object
+          schema:
+            type: string
+            enum:
+              - stacy.png
+
+        - in: path
+          required: true
+          name: target_bucket
+          schema:
+            type: string
+            enum:
+              - srishti-bucket-01
+
+        - in: path
+          required: true
+          name: target_object
+          schema:
+            type: string
+            enum:
+              - stacy-copy.png
+
+        - in: header
+          name: Content-Length
+          schema:
+            type: number
+            enum:
+              - 1
+
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rewriteToken:
+                  type: string
+                  example: access_token
+      responses:
+        '200':
+          description: 'Success'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/copyObject'
+      description: 5. Copy the created object
+      operationId: CopyTheCreatedObject
+      summary: 5. Copy the created object
+  
+  /storage/v1/b/{target_bucket}/o/{target_object}:
+    delete:
+      security:
+        - BearerAuth: []
+
+      parameters:
+        - in: path
+          required: true
+          name: target_bucket
+          schema:
+            type: string
+            enum:
+              - srishti-bucket-01
+
+        - in: path
+          required: true
+          name: target_object
+          schema:
+            type: string
+            enum:
+              - stacy-copy.png
+
+      responses:
+        '200':
+          description: ''
+      description: 6. Delete the copied object
+      operationId: DeleteTheCopiedObject
+      summary: 6. Delete the copied object
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer `access_token`
+
+  schemas:
+
+    accessToken:
+      type: object
+      properties:
+        access_token:
+          type: string
+        expires_in:
+          type: string
+        scope:
+          type: string
+        token_type:
+          type: string
+    
+    uploadObject:
+      type: object
+      properties:
+        kind:
+          type: string
+        id:
+          type: string
+        selfLink:
+          type: string
+        mediaLink:
+          type: string
+        name:
+          type: string
+        bucket:
+          type: string
+        generation:
+          type: string
+        metageneration:
+          type: string
+        contentType:
+          type: string
+        storageClass:
+          type: string
+        size:
+          type: string
+        md5Hash:
+          type: string
+        crc32c:
+          type: string
+        etag:
+          type: string
+        timeCreated:
+          type: string
+        updated:
+          type: string
+        timeStorageClassUpdated:
+          type: string
+
+    getObjects:
+      type: object
+      properties:
+        kind:
+          type: string
+        items:
+          type: array
+          items:
+            type: object
+            $ref: '#/components/schemas/uploadObject'
+
+    copyObject:
+      type: object
+      properties:
+        kind:
+          type: string
+        totalBytesRewritten:
+          type: string
+        objectsSize:
+          type: string
+        done:
+          type: boolean
+        resource:
+          $ref: '#/components/schemas/uploadObject'
+          
+    

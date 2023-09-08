@@ -7,377 +7,529 @@
 	},
 	"item": [
 		{
-			"name": "1. Get All Objects from bucket using OAuth",
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "redirect_uri",
-							"value": "https://www.google.com",
-							"type": "string"
-						},
-						{
-							"key": "grant_type",
-							"value": "authorization_code",
-							"type": "string"
-						},
-						{
-							"key": "scope",
-							"value": "{{scope_url}}",
-							"type": "string"
-						},
-						{
-							"key": "clientSecret",
-							"value": "{{client_secret}}",
-							"type": "string"
-						},
-						{
-							"key": "clientId",
-							"value": "{{client_id}}",
-							"type": "string"
-						},
-						{
-							"key": "accessTokenUrl",
-							"value": "{{access_token_url}}",
-							"type": "string"
-						},
-						{
-							"key": "authUrl",
-							"value": "{{auth_url}}",
-							"type": "string"
-						},
-						{
-							"key": "useBrowser",
-							"value": false,
-							"type": "boolean"
-						},
-						{
-							"key": "tokenName",
-							"value": "Google OAuth Token",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
+			"name": "1. Google APIs",
+			"item": [
+				{
+					"name": "1. Get Access the access code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://accounts.google.com/o/oauth2/auth?scope={{scope}}&response_type=code&access_type=offline&redirect_uri={{redirect_uri}}&client_id={{client_id}}",
+							"protocol": "https",
+							"host": [
+								"accounts",
+								"google",
+								"com"
+							],
+							"path": [
+								"o",
+								"oauth2",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "scope",
+									"value": "https://www.googleapis.com/auth/devstorage.read_write"
+								},
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "access_type",
+									"value": "offline"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "https://www.google.com"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}"
+								}
+							]
 						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://storage.googleapis.com/storage/v1/b/srishti-bucket-01/o",
-					"protocol": "https",
-					"host": [
-						"storage",
-						"googleapis",
-						"com"
-					],
-					"path": [
-						"storage",
-						"v1",
-						"b",
-						"srishti-bucket-01",
-						"o"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "2. Uploading new object to bucket",
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "redirect_uri",
-							"value": "https://www.google.com",
-							"type": "string"
-						},
-						{
-							"key": "grant_type",
-							"value": "authorization_code",
-							"type": "string"
-						},
-						{
-							"key": "scope",
-							"value": "{{scope_url}}",
-							"type": "string"
-						},
-						{
-							"key": "clientSecret",
-							"value": "{{client_secret}}",
-							"type": "string"
-						},
-						{
-							"key": "clientId",
-							"value": "{{client_id}}",
-							"type": "string"
-						},
-						{
-							"key": "accessTokenUrl",
-							"value": "{{access_token_url}}",
-							"type": "string"
-						},
-						{
-							"key": "authUrl",
-							"value": "{{auth_url}}",
-							"type": "string"
-						},
-						{
-							"key": "useBrowser",
-							"value": false,
-							"type": "boolean"
-						},
-						{
-							"key": "tokenName",
-							"value": "Google OAuth Token",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "image/png",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "file",
-					"file": {
-						"src": "/C:/Users/DELL/Downloads/pinpng.com-boss-baby-png-448375.png"
-					}
-				},
-				"url": {
-					"raw": "https://storage.googleapis.com/upload/storage/v1/b/srishti-bucket-01/o?uploadType=media&name=stacy.png",
-					"protocol": "https",
-					"host": [
-						"storage",
-						"googleapis",
-						"com"
-					],
-					"path": [
-						"upload",
-						"storage",
-						"v1",
-						"b",
-						"srishti-bucket-01",
-						"o"
-					],
-					"query": [
-						{
-							"key": "uploadType",
-							"value": "media"
-						},
-						{
-							"key": "name",
-							"value": "stacy.png"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "3. Copy the created object",
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "redirect_uri",
-							"value": "https://www.google.com",
-							"type": "string"
-						},
-						{
-							"key": "grant_type",
-							"value": "authorization_code",
-							"type": "string"
-						},
-						{
-							"key": "scope",
-							"value": "{{scope_url}}",
-							"type": "string"
-						},
-						{
-							"key": "clientSecret",
-							"value": "{{client_secret}}",
-							"type": "string"
-						},
-						{
-							"key": "clientId",
-							"value": "{{client_id}}",
-							"type": "string"
-						},
-						{
-							"key": "accessTokenUrl",
-							"value": "{{access_token_url}}",
-							"type": "string"
-						},
-						{
-							"key": "authUrl",
-							"value": "{{auth_url}}",
-							"type": "string"
-						},
-						{
-							"key": "useBrowser",
-							"value": false,
-							"type": "boolean"
-						},
-						{
-							"key": "tokenName",
-							"value": "Google OAuth Token",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
 					},
-					{
-						"key": "Content-Length",
-						"value": "0",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"rewriteToken\": \"ya29.a0AfB_byBPqwVnPVuMrgF6gRL9jSSWnyQNbCjFkBWj7Aclbe6-azZ2SXeUDk9bILjfaqI4YoE2H3VRiymZJ0NrrOljOZyA0LQ0w8hQWzLYdD9s-LABExth5sjg7zWeDuTibHieQ5fsc4c2KH1Mt08XuFX2OirBEpHzYgOnZQaCgYKAe0SARISFQHsvYlsmK_94lu_A6oB-pJ-kk0d9w0173\"\r\n}"
+					"response": []
 				},
-				"url": {
-					"raw": "https://storage.googleapis.com/storage/v1/b/srishti-bucket-01/o/stacy.png/rewriteTo/b/srishti-bucket-01/o/stacy-copy.png",
-					"protocol": "https",
-					"host": [
-						"storage",
-						"googleapis",
-						"com"
+				{
+					"name": "2. Get access token and refresh token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.collectionVariables.set(\"auth_token\", \"Bearer \" + jsonData.access_token)"
+								],
+								"type": "text/javascript"
+							}
+						}
 					],
-					"path": [
-						"storage",
-						"v1",
-						"b",
-						"srishti-bucket-01",
-						"o",
-						"stacy.png",
-						"rewriteTo",
-						"b",
-						"srishti-bucket-01",
-						"o",
-						"stacy-copy.png"
-					]
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"warning": "This is a duplicate header and will be overridden by the Content-Type header generated by Postman.",
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "Decoded Code from Browser URL",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirect_uri}}",
+									"type": "text"
+								},
+								{
+									"key": "target",
+									"value": "offline",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "https://oauth2.googleapis.com/token",
+							"protocol": "https",
+							"host": [
+								"oauth2",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get All Objects from bucket using OAuth",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://storage.googleapis.com/storage/v1/b/srishti-bucket-01/o",
+							"protocol": "https",
+							"host": [
+								"storage",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"storage",
+								"v1",
+								"b",
+								"srishti-bucket-01",
+								"o"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Uploading new object to bucket",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "image/png",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": "/path/to/file.png"
+							}
+						},
+						"url": {
+							"raw": "https://storage.googleapis.com/upload/storage/v1/b/srishti-bucket-01/o?uploadType=media&name=stacy.png",
+							"protocol": "https",
+							"host": [
+								"storage",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"upload",
+								"storage",
+								"v1",
+								"b",
+								"srishti-bucket-01",
+								"o"
+							],
+							"query": [
+								{
+									"key": "uploadType",
+									"value": "media"
+								},
+								{
+									"key": "name",
+									"value": "stacy.png"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Copy the created object",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Length",
+								"value": "0",
+								"type": "text"
+							},
+							{
+								"warning": "This is a duplicate header and will be overridden by the Authorization header generated by Postman.",
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rewriteToken\": \"{{auth_token}}\"\r\n}"
+						},
+						"url": {
+							"raw": "https://storage.googleapis.com/storage/v1/b/srishti-bucket-01/o/stacy.png/rewriteTo/b/srishti-bucket-01/o/stacy-copy.png",
+							"protocol": "https",
+							"host": [
+								"storage",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"storage",
+								"v1",
+								"b",
+								"srishti-bucket-01",
+								"o",
+								"stacy.png",
+								"rewriteTo",
+								"b",
+								"srishti-bucket-01",
+								"o",
+								"stacy-copy.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Delete the copied object",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{auth_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://storage.googleapis.com/storage/v1/b/srishti-bucket-01/o/stacy-copy.png",
+							"protocol": "https",
+							"host": [
+								"storage",
+								"googleapis",
+								"com"
+							],
+							"path": [
+								"storage",
+								"v1",
+								"b",
+								"srishti-bucket-01",
+								"o",
+								"stacy-copy.png"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "4. Delete the copied object",
-			"request": {
-				"auth": {
-					"type": "oauth2",
-					"oauth2": [
-						{
-							"key": "redirect_uri",
-							"value": "https://www.google.com",
-							"type": "string"
-						},
-						{
-							"key": "grant_type",
-							"value": "authorization_code",
-							"type": "string"
-						},
-						{
-							"key": "scope",
-							"value": "{{scope_url}}",
-							"type": "string"
-						},
-						{
-							"key": "clientSecret",
-							"value": "{{client_secret}}",
-							"type": "string"
-						},
-						{
-							"key": "clientId",
-							"value": "{{client_id}}",
-							"type": "string"
-						},
-						{
-							"key": "accessTokenUrl",
-							"value": "{{access_token_url}}",
-							"type": "string"
-						},
-						{
-							"key": "authUrl",
-							"value": "{{auth_url}}",
-							"type": "string"
-						},
-						{
-							"key": "useBrowser",
-							"value": false,
-							"type": "boolean"
-						},
-						{
-							"key": "tokenName",
-							"value": "Google OAuth Token",
-							"type": "string"
-						},
-						{
-							"key": "addTokenTo",
-							"value": "header",
-							"type": "string"
+			"name": "2. Spring IMPL",
+			"item": [
+				{
+					"name": "1. Get access code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/o/oauth2/auth?scope={{scope_url}}&response_type=code&access_type=offline&redirect_uri={{redirect_uri}}&client_id={{client_id}}",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"o",
+								"oauth2",
+								"auth"
+							],
+							"query": [
+								{
+									"key": "scope",
+									"value": "{{scope_url}}"
+								},
+								{
+									"key": "response_type",
+									"value": "code"
+								},
+								{
+									"key": "access_type",
+									"value": "offline"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirect_uri}}"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}"
+								}
+							]
 						}
-					]
-				},
-				"method": "DELETE",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
 					},
-					{
-						"key": "Content-Length",
-						"value": "0",
-						"type": "text",
-						"disabled": true
-					}
-				],
-				"url": {
-					"raw": "https://storage.googleapis.com/storage/v1/b/srishti-bucket-01/o/stacy-copy.png",
-					"protocol": "https",
-					"host": [
-						"storage",
-						"googleapis",
-						"com"
-					],
-					"path": [
-						"storage",
-						"v1",
-						"b",
-						"srishti-bucket-01",
-						"o",
-						"stacy-copy.png"
-					]
+					"response": []
+				},
+				{
+					"name": "2. Get access token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "authorization_code",
+									"type": "text"
+								},
+								{
+									"key": "code",
+									"value": "Decoded code from browser",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{client_id}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{client_secret}}",
+									"type": "text"
+								},
+								{
+									"key": "redirect_uri",
+									"value": "{{redirect_uri}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/token",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get all objects from storage bucket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/storage/v1/b/srishti-bucket-01/o",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"storage",
+								"v1",
+								"b",
+								"srishti-bucket-01",
+								"o"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Upload new object to cloud storage",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/DELL/Downloads/pinpng.com-boss-baby-png-448375.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/upload/storage/v1/b/srishti-bucket-01/o?uploadType=media&name=stacy.png",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"upload",
+								"storage",
+								"v1",
+								"b",
+								"srishti-bucket-01",
+								"o"
+							],
+							"query": [
+								{
+									"key": "uploadType",
+									"value": "media"
+								},
+								{
+									"key": "name",
+									"value": "stacy.png"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Copy object to another location",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"rewriteToken\": \"My token will be assigned by application implicitly\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/storage/v1/b/srishti-bucket-01/o/stacy.png/rewriteTo/b/srishti-bucket-01/o/stacy1.png",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"storage",
+								"v1",
+								"b",
+								"srishti-bucket-01",
+								"o",
+								"stacy.png",
+								"rewriteTo",
+								"b",
+								"srishti-bucket-01",
+								"o",
+								"stacy1.png"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "6. Delete target object from GCP",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/storage/v1/b/srishti-bucket-01/o/stacy1.png",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"storage",
+								"v1",
+								"b",
+								"srishti-bucket-01",
+								"o",
+								"stacy1.png"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	],
 	"event": [
@@ -424,6 +576,21 @@
 		{
 			"key": "scope_url",
 			"value": "https://www.googleapis.com/auth/devstorage.read_write",
+			"type": "string"
+		},
+		{
+			"key": "redirect_uri",
+			"value": "https://www.google.com",
+			"type": "string"
+		},
+		{
+			"key": "token_url",
+			"value": "https://accounts.google.com/0/oauth2/token",
+			"type": "string"
+		},
+		{
+			"key": "auth_token",
+			"value": "",
 			"type": "string"
 		}
 	]
