@@ -4,7 +4,7 @@
 
 **Project Structure**
 
-![2624a0c000e3b7dd39b8f59f3e094140.png](:/9895db94564248f2a9ff76da6de2920c)
+[![2624a0c000e3b7dd39b8f59f3e094140.png](:/9895db94564248f2a9ff76da6de2920c)](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/blob/master/4.%20Images%20Repo%20for%20ReadMe/Screenshot%202023-09-09%20162020.png?raw=true)
 	
 First two requests, are for generating the OAuth Access token to access further APIs of Google Cloud Storage in order to further manipulate the objects
 
