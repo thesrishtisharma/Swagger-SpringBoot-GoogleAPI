@@ -4,6 +4,6 @@ After creating the postman collection, I have created the Swagger Open API speci
 
 **The open API specification looks like :** 
 
-![Screenshot (122)](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/3bbd530f-d1c8-4c20-ad9b-076377ab5226)
+![Screenshot (122)](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/f1bb893d-2eae-4bb1-8bb0-22969408658b)
 
-![Screenshot (123)](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/b331e03c-90f7-468b-afa7-de20cb0d145f)
+![Screenshot (123)](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/0d0142ce-3ef1-4d37-9cf3-c5efeeedfe32)
