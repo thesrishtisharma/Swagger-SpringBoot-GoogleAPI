@@ -4,13 +4,13 @@
 
 **Project Structure**
 
-![cf240203607640452c936bdc8cb4ebe3.png](:/8a7061d36c65484f91cb8886fdd0d0f1)
+![2624a0c000e3b7dd39b8f59f3e094140.png](:/9895db94564248f2a9ff76da6de2920c)
 	
 First two requests, are for generating the OAuth Access token to access further APIs of Google Cloud Storage in order to further manipulate the objects
 
 URL endpoint in the first request must be copy pasted in the browser to obtain a code to generate the Auth Access token. In the same URL search bar, it will give you a code as shown in the below screenshot:
 
-![3ec07d5ff5843170b5ff7165bf8a468c.png](:/83f15062deef4bb9931adcda91ce2d26)
+![fbb74e1de9108602d9700094e557ced5.png](:/ac656f7529b747d6a23bb959aa374799)
 
 Pass this code in form body under "code" in the second request you will obtain the access token.
 
