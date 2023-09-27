@@ -2,7 +2,6 @@ package srishti.codeassessment.googleapi.service;
 
 import com.example.swaggercodegenerationoverview.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -11,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+import srishti.codeassessment.googleapi.model.SimplifiedData;
 import srishti.codeassessment.googleapi.model.TokenFormData;
 
 import java.io.InputStream;
@@ -23,6 +23,9 @@ public class GoogleApiService{
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private SimplifiedDataService dataService;
 
     public ResponseEntity<String> getAccessTheAccessCode(String scope, String responseType, String accessType, String redirectUri, String clientId) {
         String response =  "https://accounts.google.com/o/oauth2/auth?scope=" + scope +
@@ -98,8 +101,10 @@ public class GoogleApiService{
                         "https://storage.googleapis.com/upload/storage/v1/b/"+targetBucket+"/o" +
                                 "?uploadType="+uploadType+"&name="+name,
                         requestEntity, UploadObject.class);
+                saveObject(result.getBody());
                 return ResponseEntity.ok(result.getBody());
             } catch (Exception e) {
+                e.printStackTrace();
                 return ResponseEntity.internalServerError().body(null);
             }
         }
@@ -146,5 +151,15 @@ public class GoogleApiService{
             }
         }
         return ResponseEntity.status(401).body(null);
+    }
+
+    private void saveObject(UploadObject result){
+        SimplifiedData simplifiedData = new SimplifiedData();
+        simplifiedData.setId(result.getId());
+        simplifiedData.setUnix();
+        simplifiedData.setLink(result.getMediaLink());
+        simplifiedData.setName(result.getName());
+        simplifiedData.setBucket(result.getBucket());
+        dataService.updateSimplifiedData(simplifiedData);
     }
 }

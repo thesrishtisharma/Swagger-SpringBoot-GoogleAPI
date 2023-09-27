@@ -1,2 +1,9 @@
-package srishti.codeassessment.googleapi.model;public class JwtRequest {
+package srishti.codeassessment.googleapi.model;
+
+import lombok.Data;
+
+@Data
+public class JwtRequest {
+    private String username;
+    private String password;
 }
