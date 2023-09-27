@@ -1,5 +1,6 @@
 ## Step 3 - Use Open API (.yaml) file to generate spring boot code 
 
+# Task 1
 1. Keep the file in resources folder
   
    ![Screenshot 2023-09-09 171332](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/f7e49688-59b8-4d59-b13a-2dfb5da46ac4)
