@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "https://accounts.google.com/o/oauth2/auth?scope={{scope}}&response_type=code&access_type=offline&redirect_uri={{redirect_uri}}&client_id={{client_id}}",
+							"raw": "https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/devstorage.read_write&response_type=code&access_type=offline&redirect_uri=https://www.google.com&client_id=664993107260-cq3imkh2595slujbo9nmsg5unbnlj9ua.apps.googleusercontent.com",
 							"protocol": "https",
 							"host": [
 								"accounts",
@@ -46,7 +46,7 @@
 								},
 								{
 									"key": "client_id",
-									"value": "{{client_id}}"
+									"value": "664993107260-cq3imkh2595slujbo9nmsg5unbnlj9ua.apps.googleusercontent.com"
 								}
 							]
 						}
@@ -87,7 +87,7 @@
 								},
 								{
 									"key": "code",
-									"value": "Decoded Code from Browser URL",
+									"value": "4/0Adeu5BXWFScOCfRU-B6RHWFUX_OMNmcMO-tmi_Qm764gBoYAwjx_6O7BDDSYrgDuUZebjA",
 									"type": "text"
 								},
 								{
@@ -183,7 +183,7 @@
 						"body": {
 							"mode": "file",
 							"file": {
-								"src": "/path/to/file.png"
+								"src": "/C:/Users/DELL/Downloads/pinpng.com-boss-baby-png-448375.png"
 							}
 						},
 						"url": {
@@ -371,7 +371,7 @@
 								},
 								{
 									"key": "code",
-									"value": "Decoded code from browser",
+									"value": "4/0AfJohXnGDoJKIP4s0rmlOvtfMxUkTdb5jmpznlz81RkQdPpJ7K__cabeZSJUuvfwVv0Lmg",
 									"type": "text"
 								},
 								{
@@ -437,12 +437,12 @@
 								{
 									"key": "file",
 									"type": "file",
-									"src": "/C:/Users/DELL/Downloads/pinpng.com-boss-baby-png-448375.png"
+									"src": "/C:/Users/DELL/OneDrive/Pictures/Screenshots/Screenshot (83).png"
 								}
 							]
 						},
 						"url": {
-							"raw": "localhost:8080/upload/storage/v1/b/srishti-bucket-01/o?uploadType=media&name=stacy.png",
+							"raw": "localhost:8080/upload/storage/v1/b/srishti-bucket-01/o?uploadType=media&name=Test1.png",
 							"host": [
 								"localhost"
 							],
@@ -462,7 +462,7 @@
 								},
 								{
 									"key": "name",
-									"value": "stacy.png"
+									"value": "Test1.png"
 								}
 							]
 						}
@@ -524,6 +524,99 @@
 								"srishti-bucket-01",
 								"o",
 								"stacy1.png"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Data Collector Service",
+			"item": [
+				{
+					"name": "1. Get max 5 records from Database",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpbXNyaXNodGlzaGFybWFAZ21haWwuY29tIiwiZXhwIjoxNjk1ODUzNzU5LCJpYXQiOjE2OTU4MTc3NTl9.bnxnww_ppN4jbYwRa_vWn5c1GKGJAWvxBsG9H3PEFss",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8080/data-controller/limited-records",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"data-controller",
+								"limited-records"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data Access",
+			"item": [
+				{
+					"name": "1. Add a user to database",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"Srishti Sharma\",\r\n    \"email\": \"imsrishtisharma@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/add-user",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"add-user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Generate Jwt Token",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"imsrishtisharma@gmail.com\",\r\n    \"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/auth/token",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"token"
 							]
 						}
 					},
