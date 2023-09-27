@@ -26,9 +26,6 @@ public class DataAccess implements UserDetails {
     @Column(nullable = false)
     private String password;
 
-    public DataAccess(String email, String password) {
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

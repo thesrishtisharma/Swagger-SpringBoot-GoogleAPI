@@ -125,7 +125,6 @@ public class GoogleApiService{
                                 + "/rewriteTo/b/" + targetBucket + "/o/" + targetObject,
                         requestEntity, CopyObject.class
                 );
-
                 return ResponseEntity.ok(result.getBody());
             } catch (Exception e) {
                 return ResponseEntity.internalServerError().body(null);
