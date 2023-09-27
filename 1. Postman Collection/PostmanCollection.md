@@ -31,10 +31,10 @@ This access token can be further used in all the followed by requests in order t
 ![image](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/d63154e9-7ebd-48f5-89d5-8a361b58ec59)
 
 Since I used H2 in memory database, hence adding users to database is unlocked, so that for testing purpose first a user can be added to the db:
-  ![image](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/4574e08a-bff4-46ac-b022-df1cb8135547)
+  ![image](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/70f6799e-0c8b-405b-9bdb-51b442d01072)
 
 Generating JWT Token for authentication:
-  ![image](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/64633d7d-753c-467a-b870-b48135a43fee)
+  ![image](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/92d017bb-5acd-4058-bdeb-95338f0b150f)
 
 This token can be used in further requests for authentication purpose as:
   ![image](https://github.com/thesrishtisharma/Swagger-SpringBoot-GoogleAPI/assets/38985008/5670e189-5e85-4212-9f42-cb1aa6452f3f)
