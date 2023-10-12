@@ -30,7 +30,7 @@
 							"query": [
 								{
 									"key": "scope",
-									"value": "https://www.googleapis.com/auth/devstorage.read_write"
+									"value": "{{scope_url}}"
 								},
 								{
 									"key": "response_type",
@@ -42,11 +42,11 @@
 								},
 								{
 									"key": "redirect_uri",
-									"value": "https://www.google.com"
+									"value": "{{redirect_uri}}"
 								},
 								{
 									"key": "client_id",
-									"value": "664993107260-cq3imkh2595slujbo9nmsg5unbnlj9ua.apps.googleusercontent.com"
+									"value": "{{client_id}}"
 								}
 							]
 						}
@@ -87,7 +87,7 @@
 								},
 								{
 									"key": "code",
-									"value": "4/0Adeu5BXWFScOCfRU-B6RHWFUX_OMNmcMO-tmi_Qm764gBoYAwjx_6O7BDDSYrgDuUZebjA",
+									"value": "decoded code",
 									"type": "text"
 								},
 								{
@@ -371,7 +371,7 @@
 								},
 								{
 									"key": "code",
-									"value": "4/0AfJohXnGDoJKIP4s0rmlOvtfMxUkTdb5jmpznlz81RkQdPpJ7K__cabeZSJUuvfwVv0Lmg",
+									"value": "decoded code",
 									"type": "text"
 								},
 								{
